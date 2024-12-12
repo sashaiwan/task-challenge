@@ -11,6 +11,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   loading = false;
+  success: string | null = null;
   error: string | null = null;
   filterCompleted: boolean | undefined = undefined;
   private taskCreatedListener: any;
@@ -67,6 +68,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.taskService.deleteTask(task.id).subscribe({
         next: () => {
           this.tasks = this.tasks.filter((t) => t.id !== task.id);
+          this.handleSuccess('Task deleted successfully');
         },
         error: (error) => {
           this.error = 'Failed to delete task';
@@ -74,5 +76,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
         },
       });
     }
+  }
+
+  private handleSuccess(message: string) {
+    this.success = message;
+    setTimeout(() => (this.success = null), 2000);
   }
 }

@@ -13,6 +13,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")  // Angular app URL
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddDbContext<TaskDbContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -33,6 +43,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAngular");
 
 const string apiBaseUrl = "/api";
 // Health check endpoint
