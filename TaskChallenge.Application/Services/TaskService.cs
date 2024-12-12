@@ -122,6 +122,6 @@ public class TaskService(TaskDbContext taskDbContext, IValidator<TaskModel> vali
     }
     
     // TODO: move to common
-    private Result<T> DbError<T>(string errorMessage)
+    private static Result<T> DbError<T>(string errorMessage)
         => Result<T>.Failure(new ErrorType(ErrorName.DatabaseError, errorMessage));
 }
