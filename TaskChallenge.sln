@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{DF0A7069-3E34-4E4C-9452-9A326D6C8D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskChallenge.Api", "TaskChallenge.Api\TaskChallenge.Api.csproj", "{DF0A7069-3E34-4E4C-9452-9A326D6C8D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskChallenge.Infrastructure", "TaskChallenge.Infrastructure\TaskChallenge.Infrastructure.csproj", "{13F9178C-381D-479F-B100-AAD41F1DDC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskChallenge.Application", "TaskChallenge.Application\TaskChallenge.Application.csproj", "{D21E785B-A07A-4B2C-84D7-B629240A56DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{DF0A7069-3E34-4E4C-9452-9A326D6C8D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF0A7069-3E34-4E4C-9452-9A326D6C8D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF0A7069-3E34-4E4C-9452-9A326D6C8D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F9178C-381D-479F-B100-AAD41F1DDC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F9178C-381D-479F-B100-AAD41F1DDC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F9178C-381D-479F-B100-AAD41F1DDC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F9178C-381D-479F-B100-AAD41F1DDC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D21E785B-A07A-4B2C-84D7-B629240A56DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D21E785B-A07A-4B2C-84D7-B629240A56DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D21E785B-A07A-4B2C-84D7-B629240A56DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D21E785B-A07A-4B2C-84D7-B629240A56DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
