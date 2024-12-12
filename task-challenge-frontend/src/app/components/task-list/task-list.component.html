@@ -1,0 +1,87 @@
+<div class="p-6 bg-white rounded-lg shadow-sm">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-xl font-semibold">Tasks</h2>
+    <div class="flex space-x-2">
+      <button
+        (click)="filterCompleted = undefined; loadTasks()"
+        [class.bg-blue-600]="filterCompleted === null"
+        [class.text-white]="filterCompleted === null"
+        class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
+      >
+        All
+      </button>
+      <button
+        (click)="filterCompleted = false; loadTasks()"
+        [class.bg-blue-600]="filterCompleted === false"
+        [class.text-white]="filterCompleted === false"
+        class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
+      >
+        Active
+      </button>
+      <button
+        (click)="filterCompleted = true; loadTasks()"
+        [class.bg-blue-600]="filterCompleted === true"
+        [class.text-white]="filterCompleted === true"
+        class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
+      >
+        Completed
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="p-4 mb-4 text-red-700 bg-red-100 rounded-lg">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="flex justify-center py-4">
+    <div
+      class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"
+    ></div>
+  </div>
+
+  <div class="space-y-2">
+    <div
+      *ngFor="let task of tasks"
+      class="flex justify-between items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+    >
+      <div class="flex items-center space-x-3 flex-grow">
+        <input
+          type="checkbox"
+          [checked]="task.isCompleted"
+          (change)="onTaskComplete(task)"
+          class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+        />
+        <div class="flex flex-col">
+          <span
+            [class.line-through]="task.isCompleted"
+            [class.text-gray-500]="task.isCompleted"
+            class="text-sm font-medium"
+          >
+            {{ task.title }}
+          </span>
+          <span *ngIf="task.description" class="text-xs text-gray-500">
+            {{ task.description }}
+          </span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 ml-4">
+        <span *ngIf="task.dueDate" class="text-sm text-gray-500">
+          Due: {{ task.dueDate | date : "shortDate" }}
+        </span>
+        <button
+          (click)="deleteTask(task)"
+          class="px-3 py-1 text-sm text-red-600 hover:text-red-700 hover:bg-red-100 rounded-md transition-colors"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="tasks.length === 0 && !loading"
+    class="text-center py-8 text-gray-500 bg-gray-50 rounded-lg"
+  >
+    No tasks found
+  </div>
+</div>
